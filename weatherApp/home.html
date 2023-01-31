@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            background: rgb(255, 251, 235);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+
+        }
+
+        h2,
+        p,
+        h1,
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: black;
+            display: block;
+            align-items: center;
+
+        }
+
+        i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            margin: 0 2rem;
+            padding: 3rem 0;
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html,
+        body {
+
+            height: 100%;
+        }
+
+
+
+
+        #box {
+
+            width: 20vw;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.2rem 3rem rgba(0, 0, 0, 0.2);
+            background: rgba(99, 164, 249, 0.567);
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+            min-width: 20rem;
+            min-height: 35rem;
+        }
+
+        .wave {
+            opacity: 0.3;
+            position: absolute;
+            top: 130%;
+            left: 50%;
+            background: white;
+            width: 50rem;
+            height: 50rem;
+            margin-left: -25rem;
+            margin-top: -25rem;
+            transform-origin: 50% 48%;
+            border-radius: 43%;
+            animation: drift 3000ms infinite linear;
+            z-index: 8;
+        }
+
+        .wave-three {
+            animation: drift 5000ms infinite linear;
+            z-index: 2;
+            opacity: 0.2;
+        }
+
+        .wave-two {
+            animation: drift 7000ms infinite linear;
+            opacity: 0.1;
+            z-index: 4;
+        }
+
+        #box:after {
+            content: "";
+            display: block;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 11;
+            transform: translate3d(0, 0, 0);
+        }
+
+        @keyframes drift {
+            from {
+                transform: rotate(0 deg);
+            }
+
+            from {
+                transform: rotate(360deg);
+            }
+        }
+
+        #info {
+            position: absolute;
+            bottom: 0;
+            z-index: 4;
+            margin: auto;
+        }
+
+
+
+        .fa-street-view {
+            animation: rotates 3s linear infinite alternate;
+
+        }
+
+        @keyframes rotates {
+            from {
+                transform: translateX(-0.3rem);
+            }
+
+            to {
+                transform: translateX(0.3rem);
+            }
+        }
+
+        #date {
+            display: flex;
+            text-align: centre;
+            justify-content: center;
+            margin-top: 0.5rem;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        #temp {
+            margin-top: 1.8rem;
+            text-align: center;
+            font-size: 2.8rem;
+        }
+
+        #temp-min-max {
+            text-align: center;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            font-size: 1rem;
+
+        }
+
+        #weathercon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+
+        }
+
+        
+
+        @keyframes fas-anime {
+            from {
+                transform: scale(0.8);
+            }
+
+            to {
+                transform: scale(1.0);
+            }
+        }
+
+        @media (max-width:600px) {
+            .box {
+                width: 90vw;
+                height: 80vh;
+            }
+
+            .wave {
+                top: 120%;
+            }
+
+            #weathercon {
+                font-size: 1.5rem;
+            }
+
+
+        }
+
+        @media (max-height:500px) {
+            .box {
+                height: 80vh;
+            }
+
+            .wave {
+                top: 115%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <div class="wave wave-one"></div>
+        <div class="wave wave-two"></div>
+        <div class="wave wave-three"></div>
+
+
+
+        <div id="weathercon">
+           tempstatus
+
+        </div>
+
+
+
+        <div id="info">
+            <h2 class="location"> <i class="fa-solid fa-street-view"></i> {%location%},{%country%} </p>
+            </h2>
+
+            <p id="date">WED| JAN 25|6:01PM</p>
+            <h1 id="temp">{%tempval%}&deg;C</h1>
+            <h3 id="temp-min-max">MIN {%tempmin%}&deg;C | MAX {%tempmax%}&deg;C </h3>
+        </div>
+    </div>
+
+
+
+    <script>
+        const curDay = document.getElementById('date');
+        const box = document.getElementById("box");
+        const info = document.getElementById('info');
+        const date = document.getElementById('date');
+        const MinMax = document.getElementById('temp-min-max');
+
+        let weatherCon = document.getElementById('weathercon');
+
+
+        let conditon = document.getElementsByClassName('.location');
+
+        let tempstatus = "{%tempstatus%}";
+
+        if (tempstatus === "Sunny") {
+            weatherCon.innerHTML ="<span>SUNNY</span>";
+            box.style.backgroundImage = "url('https://i.pinimg.com/originals/63/30/5f/63305fee4ddad8e7be5060d17b658356.jpg')";
+            box.style.backgroundSize = "cover";
+            box.style.color = "black";
+            date.style.color = "black";
+            MinMax.style.color = "black";
+           
+        } 
+        
+        else if (tempstatus === "Smoke") {
+            weatherCon.innerHTML ="<span>Smoke</span>";
+            box.style.backgroundImage = "url('https://images.wondershare.com/filmora/article-images/2021/pixel-art-wallpaper-city.jpg')";
+            box.style.backgroundSize = "cover";
+            box.style.color = "rgb(237 183 183)";
+            date.style.color = "#080808";
+            MinMax.style.color = "#080808";
+          
+
+        } else if (tempstatus === "Rainy") {
+            weatherCon.innerHTML ="<span>RAINY</span>";
+            box.style.backgroundImage = "url('https://png.pngtree.com/background/20210711/original/pngtree-green-art-inspirational-beautiful-rainy-day-soul-chicken-soup-rainy-season-picture-image_1092649.jpg')";
+            box.style.backgroundSize = "cover";
+            box.style.color = "#010108";
+            date.style.color = "#010108";
+            MinMax.style.color = "#010108";
+          
+        }
+        else if (tempstatus === "Clear") {
+            weatherCon.innerHTML ="<span>CLEAR</span>";
+            box.style.backgroundImage = "url('https://png.pngtree.com/thumb_back/fh260/background/20220217/pngtree-background-material-of-wheat-field-in-summer-image_946308.jpg')";
+            box.style.backgroundSize = "cover";
+            box.style.color = "rgb(7 17 105)";
+            date.style.color = "rgb(7 17 105)";
+            MinMax.style.color = "rgb(7 17 105)";
+
+        }
+        else if (tempstatus === 'Mist') {
+            weatherCon.innerHTML = "<span>MISTY</span>";
+            box.style.backgroundImage = "url('https://png.pngtree.com/background/20210711/original/pngtree-ink-charm-poster-background-picture-image_1109896.jpg')";
+            box.style.backgroundSize = "cover";
+            box.style.color = "#000000";
+            date.style.color = "#000000";
+            MinMax.style.color = "#000000";
+
+        }
+        else if (tempstatus === "Haze") {
+            weatherCon.innerHTML ="<span>HAZE</span>";
+            box.style.backgroundImage = "url('https://e0.pxfuel.com/wallpapers/243/709/desktop-wallpaper-misty-forest-dark-foggy-forest.jpg')";
+            box.style.backgroundSize = "cover";
+            box.style.color = "white";
+            date.style.color = "white";
+            MinMax.style.color = "white";
+           
+           
+
+
+
+
+
+        }
+
+        const getCurrentDay = () => {
+            var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            var currentTime = new Date();
+            var day = weekday[currentTime.getDay()];
+            return day;
+        };
+
+        const getCurrentTime = () => {
+            var months = [
+                "Jan",
+                "Feb",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",
+            ];
+            var now = new Date();
+            var date = now.getDate();
+            var hours = now.getHours();
+            var minute = now.getMinutes();
+            let period = "AM";
+            if (hours > 11) {
+                period = "PM";
+                if (hours > 12) hours -= 12;
+            }
+            if (minute < 10) {
+                minute = "0" + minute;
+            }
+            var month = months[now.getMonth()];
+            return `${month} ${date} | ${hours}:${minute} ${period}`;
+        };
+        curDay.innerHTML = getCurrentDay() + " | " + getCurrentTime();
+    </script>
+
+</body>
+
+</html>
